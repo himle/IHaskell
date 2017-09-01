@@ -1047,7 +1047,7 @@ doLoadModule name modName = do
     errRef <- liftIO $ newIORef []
     setSessionDynFlags
       flags
-        { hscTarget = objTarget flags
+        { hscTarget = HscInterpreted
 #if MIN_VERSION_ghc(8,0,0)
         , log_action = \dflags sev srcspan ppr _style msg -> modifyIORef' errRef (showSDoc flags msg :)
 #else
